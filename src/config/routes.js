@@ -7,6 +7,8 @@ const apiRouter = express.Router();
 
 apiRouter.get('/user', users.all);
 apiRouter.put('/user', users.create);
+apiRouter.post('/user/login', users.login);
+apiRouter.get('/user/me', users.me);
 
 apiRouter.get('/product', products.all);
 apiRouter.put('/product', products.create);
