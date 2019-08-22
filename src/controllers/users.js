@@ -1,6 +1,6 @@
 const User = require("../models/user");
-const jwt = require('jsonwebtoken');
-
+const jwt = require("jsonwebtoken");
+const config = require("../config/environment");
 
 module.exports = {
   all: (req, res) => {
@@ -8,20 +8,16 @@ module.exports = {
       .then(users => res.json(users))
       .catch(err => res.status(500).json(err));
   },
-  me: (req,res)=>{
-    const user = jwt.verify(req.headers.authorization, 'gwecg782g87fgiu');
+  me: (req, res) => {
     User.findOne({
-      _id: user.id
+      _id: req.user.id,
     })
-    .then(user =>res.json(user))
-    .catch(err=> res.status(500).json(err));
+      .then(user => res.json(user))
+      .catch(err => res.status(500).json(err));
   },
   create: (req, res) => {
     const user = new User(req.body);
-    User.exists({'email': user.email})
-    .then((ans) => {
-      console.log(user.email)
-      console.log(ans);
+    User.exists({ email: user.email }).then(ans => {
       if (ans) {
         res.status(400).send();
       }
@@ -35,16 +31,16 @@ module.exports = {
   login: (req, res) => {
     User.findOne({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     })
       .then(user => {
         if (user) {
-          const token = jwt.sign({id: user._id}, 'gwecg782g87fgiu')
+          const token = jwt.sign({ id: user._id }, config.secret);
           res.json({ token });
         } else {
           res.status(403).json({ result: "wrong password or email" });
         }
       })
       .catch(err => res.status(500).json(err));
-  }
+  },
 };
