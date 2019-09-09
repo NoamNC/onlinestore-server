@@ -5,7 +5,16 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   }
-},{collection: 'catagories'});
+},{
+  collection: 'catagories',
+  toJSON:{
+    transform: (doc, ret)=>{
+      ret.id = ret._id;
+      delete ret._id;
+      return ret; 
+      }
+  }
+});
 
 const Category = mongoose.model("category", CategorySchema);
 module.exports = Category;
