@@ -21,3 +21,5 @@ app.listen(port, () => {
     require('./db');
 
 });
+
+module.exports = app;

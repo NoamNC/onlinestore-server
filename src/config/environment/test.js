@@ -1,7 +1,7 @@
 module.exports = {
-    secret: 'gwecg782g87fgiu',
+    secret: 'gwfghcg6r77fgiu',
     db: {
-        name: 'onlinestore',
+        name: 'onlinestore-test',
         address:'localhost'
     }
 };

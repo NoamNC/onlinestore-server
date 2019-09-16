@@ -1,4 +1,7 @@
-const development = require('./development');
-const production = require('./production');
+const env = {
+    development: require('./development'),
+    production: require('./production'),
+    test: require('./test')
+};
 
-module.exports = development;
+module.exports = env[process.env.NODE_ENV ]|| env.development;
