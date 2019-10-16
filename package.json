@@ -5,8 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "mocha set NODE_ENV=test "
-    
+    "test": "cross-env NODE_ENV=test mocha --timeout 5000"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cross-env": "^5.2.1",
     "mocha": "^6.2.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.1"
@@ -30,6 +30,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.9"
+    "mongoose": "^5.6.9",
+    "multer": "^1.4.2"
   }
 }
