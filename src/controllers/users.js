@@ -43,9 +43,13 @@ module.exports = {
     
 
   login: (req, res) => {
+    console.log({
+      email: req.body.email,
+      password: req.body.password
+    });
     User.findOne({
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.password
     })
       .then(user => {
         if (user) {

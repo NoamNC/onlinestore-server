@@ -21,7 +21,6 @@ apiRouter.put('/product', multerProducts.single('image'), products.create);
 apiRouter.post('/product/bulk', products.getByIds);
 
 apiRouter.get('/category', categories.all);
-// apiRouter.put('/category', categories.create);
 apiRouter.put('/category', multerCategories.single('image'), categories.create);
 apiRouter.get('/category/:id/product', categories.products);
 

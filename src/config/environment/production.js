@@ -1,8 +1,5 @@
 module.exports = {
-    port: 4001,
+    port: process.env.PORT,
     secret: 'gwecg782g87fgiu',
-    db: {
-        name: 'onlinestore',
-        address:''
-    }
+    db: 'mongodb://<NoamAdmin>:<noam6626>@ds159216.mlab.com:59216/heroku_rjt71q1f'
 };
