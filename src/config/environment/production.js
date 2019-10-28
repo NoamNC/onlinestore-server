@@ -1,5 +1,5 @@
 module.exports = {
     port: process.env.PORT,
     secret: 'gwecg782g87fgiu',
-    db: 'mongodb://NoamAdmin:noam6626@ds053428.mlab.com:53428/heroku_q8w8x7x8'
+    db: `mongodb://${process.env.DB_user}:${process.env.DB_PASSWORD}@ds053428.mlab.com:53428/heroku_q8w8x7x8`
 };

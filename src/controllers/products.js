@@ -7,7 +7,6 @@ module.exports = {
     .catch(err=>res.status(500).json(err));
   },
   create: (req, res) => {
-    console.log(req.body);
       const product = new Product(req.body);
       product.image = req.file.filename;
       product.save()
@@ -27,6 +26,7 @@ module.exports = {
   },
 
   getByIds:(req,res)=>{
+    console.log(req.body);
     Product.find({
         _id: {$in: req.body.ids}
     })
