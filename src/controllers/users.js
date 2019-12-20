@@ -30,23 +30,17 @@ module.exports = {
     });
   },
 
+
+
   edit: (req, res)=>{
-    console.log('editMode');
-    console.log(req.params.id)
     User.findOneAndUpdate({_id: new ObjectId(req.params.id)}, req.body, {new: true})
     .then(user => res.status(201).json(user))
     .catch(err => res.status(418).json(err));
-    console.log('updated');
-
-
   },
+
     
 
   login: (req, res) => {
-    console.log({
-      email: req.body.email,
-      password: req.body.password
-    });
     User.findOne({
       email: req.body.email,
       password: req.body.password
