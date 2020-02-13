@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const ObjectId = require('mongoose').Types.ObjectId;
+const ObjectId = require("mongoose").Types.ObjectId;
 const config = require("../config/environment");
 
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
   },
   me: (req, res) => {
     User.findOne({
-      _id: req.user.id,
+      _id: req.user.id
     })
       .then(user => res.json(user))
       .catch(err => res.status(500).json(err));
@@ -30,15 +30,13 @@ module.exports = {
     });
   },
 
-
-
-  edit: (req, res)=>{
-    User.findOneAndUpdate({_id: new ObjectId(req.params.id)}, req.body, {new: true})
-    .then(user => res.status(201).json(user))
-    .catch(err => res.status(418).json(err));
+  edit: (req, res) => {
+    User.findOneAndUpdate({ _id: new ObjectId(req.params.id) }, req.body, {
+      new: true
+    })
+      .then(user => res.status(201).json(user))
+      .catch(err => res.status(418).json(err));
   },
-
-    
 
   login: (req, res) => {
     User.findOne({
@@ -54,5 +52,5 @@ module.exports = {
         }
       })
       .catch(err => res.status(500).json(err));
-  },
+  }
 };
